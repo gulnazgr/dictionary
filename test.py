@@ -16,7 +16,6 @@ class TestGoodUpdate(unittest.TestCase):
 
     def setUp(self) -> None:
         """Настраиваем проверяемую систему перед каждым тестом."""
-
         good_id = 123
         good_name = "Телевизор"
         good_height = 5
@@ -50,13 +49,12 @@ class TestGoodUpdate(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Подчищаем данные после каждого теста."""
-        db_con = sqlite3.connect('./test.db')
+        db_con = sqlite3.connect("./test.db")
         db_con.execute("DROP TABLE IF EXISTS goods;")
         db_con.execute("DROP TABLE IF EXISTS shops_goods;")
 
-    def test_update(self):
+    def test_update(self) -> None:
         """Проверяет обновление товара."""
-
         test_name = "Телевизор LG"
         test_amount = 7
 
@@ -67,9 +65,9 @@ class TestGoodUpdate(unittest.TestCase):
             "location_and_quantity": [{"location": "Магазин в центре", "amount": test_amount}],
         }
 
-        inventory(test_good, './test.db')
+        inventory(test_good, "./test.db")
 
-        db_con = sqlite3.connect('./test.db')
+        db_con = sqlite3.connect("./test.db")
 
         row = db_con.execute("SELECT * FROM goods WHERE id = 123 LIMIT 1").fetchone()
 
@@ -84,9 +82,6 @@ class TestGoodUpdate(unittest.TestCase):
         amount = row[3]
 
         self.assertEqual(test_amount, amount)
-
-
-
 
 
 if __name__ == "__main__":
