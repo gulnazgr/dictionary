@@ -7,7 +7,7 @@ Table goods as G {
 }
 
 // Распределение товара по магазинам
-Table shops_goods as S {
+Table shops_goods as S{
   id int [pk, not null, increment, note: 'идентификатор записи']
   id_good int [not null, note: 'идентификатор товара']
   location varchar [not null, note: 'адрес магазина']
@@ -15,4 +15,4 @@ Table shops_goods as S {
   
 }
 
-Ref:"G"."id" - "S"."id_good"
+Ref: "G"."id" - "S"."id_good"
