@@ -4,13 +4,6 @@ import sqlite3
 from main import inventory, create_goods_table, create_shops_goods_table
 
 
-def load_json(path: str) -> dict:
-    """Загружает данные из json-файла."""
-    with open(path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-        return data
-
-
 class TestGoodUpdate(unittest.TestCase):
     """Проверяет обновление товара."""
 
